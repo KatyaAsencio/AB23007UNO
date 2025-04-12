@@ -1,3 +1,22 @@
+Metadata-Version: 2.4
+Name: ab23007uno
+Version: 0.1.0
+Summary: Librería de métodos numéricos para resolver problemas matemáticos
+Home-page: https://github.com/KatyaAsencio/AB23007UNO
+Author: Katya Asencio
+Author-email: ab23007@ues.edu.sv
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.19.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
 # ab23007uno
 
 Una librería de Python para resolver problemas matemáticos y numéricos, especializada en métodos iterativos y directos para la resolución de sistemas de ecuaciones lineales y búsqueda de raíces.
