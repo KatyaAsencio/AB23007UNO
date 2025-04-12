@@ -52,7 +52,7 @@ x_cramer = cramer(A, b)
 print("Solución por regla de Cramer:", x_cramer)
 
 # Resolver usando factorización LU
-x_lu = lu_decomposition(A, b)
+x_lu = resolver_LU(A, b)
 print("Solución por factorización LU:", x_lu)
 ```
 

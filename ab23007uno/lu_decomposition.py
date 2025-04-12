@@ -27,21 +27,26 @@ def lu_decomposition(A, tol=1e-6):
     
     return L, U, P
 
+
 def resolver_LU(A, b):
     """
     Resuelve Ax = b usando descomposición LU.
     """
+    A = np.array(A, dtype=float)
+    b = np.array(b, dtype=float)
+    
     L, U, P = lu_decomposition(A)
     pb = P @ b  # Vector permutado
     
     # Sustitución hacia adelante (Ly = Pb)
-    y = np.zeros_like(b)
-    for i in range(len(b)):
-        y[i] = pb[i] - L[i, :i] @ y[:i]
+    n = len(b)
+    y = np.zeros(n)
+    for i in range(n):
+        y[i] = pb[i] - np.dot(L[i, :i], y[:i])  # Importante usar :i no i:
     
     # Sustitución hacia atrás (Ux = y)
-    x = np.zeros_like(b)
-    for i in range(len(b)-1, -1, -1):
-        x[i] = (y[i] - U[i, i+1:] @ x[i+1:]) / U[i, i]
+    x = np.zeros(n)
+    for i in range(n-1, -1, -1):
+        x[i] = (y[i] - np.dot(U[i, i+1:], x[i+1:])) / U[i, i]
     
     return x

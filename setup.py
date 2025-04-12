@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="ab23007uno",
-    version="0.1.0",
+    version="0.4.0",
     author="Katya Asencio",
     author_email="ab23007@ues.edu.sv",
     description="Librería de métodos numéricos para resolver problemas matemáticos",
