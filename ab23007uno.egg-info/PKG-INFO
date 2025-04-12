@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: ab23007uno
-Version: 0.3.0
+Version: 0.4.0
 Summary: Librería de métodos numéricos para resolver problemas matemáticos
 Home-page: https://github.com/KatyaAsencio/AB23007UNO
 Author: Katya Asencio
@@ -71,7 +71,7 @@ x_cramer = cramer(A, b)
 print("Solución por regla de Cramer:", x_cramer)
 
 # Resolver usando factorización LU
-x_lu = lu_decomposition(A, b)
+x_lu = resolver_LU(A, b)
 print("Solución por factorización LU:", x_lu)
 ```
 

@@ -33,15 +33,19 @@ A continuación se muestran ejemplos básicos de uso para cada método:
 
 ```python
 import numpy as np
-from ab23007uno import gauss_elimination, cramer, lu_decomposition
+from ab23007uno import gauss_elimination, cramer, lu_decomposition, resolver_LU
 
-# Definir sistema: 2x + y - z = 8, -3x - y + 2z = -11, -2x + y + 2z = -3
+# Definir sistema: 5x₁ + x₂ + x₃ = 10
+#                   x₁ + 6x₂ + x₃ = 16
+#                   x₁ + x₂ + 7x₃ = 24
 A = np.array([
-    [2, 1, -1],
-    [-3, -1, 2],
-    [-2, 1, 2]
+    [5, 1, 1],
+    [1, 6, 1],
+    [1, 1, 7]
 ])
-b = np.array([8, -11, -3])
+b = np.array([10, 16, 24])
+
+# Solución esperada: [1, 2, 3]
 
 # Resolver usando eliminación gaussiana
 x_gauss = gauss_elimination(A, b)
@@ -62,11 +66,12 @@ print("Solución por factorización LU:", x_lu)
 from ab23007uno import jacobi, gauss_seidel
 
 # Usar los métodos iterativos con valores por defecto
-x_jacobi, iterations_jacobi = jacobi(A, b)
+x0 = np.zeros(len(b))  
+x_jacobi, iterations_jacobi = jacobi(A, b, x0)
 print(f"Solución por método de Jacobi ({iterations_jacobi} iteraciones):", x_jacobi)
 
 # Ejemplo con parámetros personalizados
-x_seidel, iterations_seidel = gauss_seidel(A, b, tol=1e-8, verbose=True)
+x_seidel, iterations_seidel, error_seidel= gauss_seidel(A, b, x0, tol=1e-8, verbose=True)
 print(f"Solución por método de Gauss-Seidel ({iterations_seidel} iteraciones):", x_seidel)
 ```
 
@@ -85,12 +90,12 @@ def g(x):
     return math.sin(x) - 0.5
 
 # Resolver usando método de bisección con los valores por defecto
-root1, iterations1 = bisection(f, 1, 2)
+x_biseccion1, iterations1 = bisection(f, 1, 2)
 # También puedes personalizar los parámetros si es necesario
-root2, iterations2 = bisection(g, 0, math.pi/2, tol=1e-8, verbose=True)
+x_biseccion2, iterations2 = bisection(g, 0, math.pi/2, tol=1e-8, verbose=True)
 
-print(f"Raíz aproximada de f: {root1} (encontrada en {iterations1} iteraciones)")
-print(f"Raíz aproximada de g: {root2} (encontrada en {iterations2} iteraciones)")
+print(f"Solución de f(x) = 0 por bisección ({iterations1} iteraciones): {x_biseccion1}")
+print(f"Solución de g(x) = 0 por bisección ({iterations2} iteraciones): {x_biseccion2}")
 ```
 
 ## Requisitos
